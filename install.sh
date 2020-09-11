@@ -3,7 +3,7 @@ SH_PATH=$(cd "$(dirname "$0")";pwd)
 cd ${SH_PATH}
 
 automatic_restart_parameter(){
-    echo "這裡需要輸入IBM登入的帳號及密碼，以供自動重啟與稍後登入所使用。"
+    echo "这里需要输入IBM登入的帐号及密码，以供自动重启与稍后登入所使用。"
     read -p "Email>" ACCOUNT
     read -p "Password>" PASSWORD
     ibmcloud login -a "https://cloud.ibm.com" -r "us-south" -u "${ACCOUNT}" -p "${PASSWORD}"
@@ -18,12 +18,12 @@ create_mainfest_file(){
     IBM_MEM_SIZE=256
     fi
     echo "内存大小：${IBM_MEM_SIZE}"
-    read -p "指定UUID(不指定將隨機生成)：" UUID 
+    read -p "指定UUID(不指定将随机生成)：" UUID 
     if [ -z "${UUID}" ];then
     UUID=$(cat /proc/sys/kernel/random/uuid)
     fi
     echo "UUID：${UUID}"
-    read -p "指定WebSocket路徑(不指定將隨機生成)：" WSPATH
+    read -p "指定WebSocket路徑(不指定将随机生成)：" WSPATH
     if [ -z "${WSPATH}" ];then
     WSPATH=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)
     fi
@@ -49,7 +49,7 @@ EOF
                     "clients": [
                         {
                             "id": "${UUID}",
-                            "alterId": 64
+                            "alterId": 4
                         }
                     ]
                 },
@@ -137,7 +137,7 @@ install(){
       "add": "${IBM_APP_NAME}.us-south.cf.appdomain.cloud",
       "port": "443",
       "id": "${UUID}",
-      "aid": "64",
+      "aid": "4",
       "net": "ws",
       "type": "none",
       "host": "",
