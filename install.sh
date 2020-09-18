@@ -89,6 +89,7 @@ clone_repo(){
     echo "进行初始化。。。"
 	rm -rf IBM-cloudfoundry-continue
     git clone https://github.com/a145600/AutoIBM
+    mv AutoIBM IBM-cloudfoundry-continue
     cd IBM-cloudfoundry-continue
     git submodule update --init --recursive
     cd cloudfoundry/fullaccesstointernet/
